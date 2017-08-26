@@ -4,6 +4,7 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
 
 import java.util.Arrays;
+import java.util.Iterator;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -32,4 +33,41 @@ public class IntroductionTest {
 		
 		assertThat(sum, equalTo(6));
 	}
+	
+	@SuppressWarnings("rawtypes")
+	@Test
+	public void shouldSumValuesWithoutGenerics() throws Exception {
+		List integers = Arrays.asList(new Integer[] { 1, 2, 3 });
+		
+		Integer sum = 0;
+		for (Iterator it = integers.iterator(); it.hasNext();) {
+			Integer value = (Integer) it.next();
+			sum += value;
+		}
+		
+		assertThat(sum, equalTo(6));
+	}
+	
+	@SuppressWarnings("rawtypes")
+	@Test
+	public void shouldSumValuesWithoutGenercisInAClearWay() throws Exception {
+		List integers = Arrays.asList(new Integer[] { 1, 2, 3 });
+		
+		Iterator iterator = integers.iterator();
+		Integer sum = 0;
+		while (iterator.hasNext()) {
+			Integer value = (Integer) iterator.next();
+			sum += value;
+		}
+	}
 }
+
+
+
+
+
+
+
+
+
+
