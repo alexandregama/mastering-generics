@@ -59,6 +59,20 @@ public class IntroductionTest {
 			Integer value = (Integer) iterator.next();
 			sum += value;
 		}
+		
+		assertThat(sum, equalTo(6));
+	}
+	
+	@Test
+	public void shouldSumValuesUsingJustArray() throws Exception {
+		Integer[] integers = new Integer[] {1, 2, 3};
+	
+		Integer sum = 0;
+		for (int i = 0; i < integers.length; i++) {
+			sum += integers[i];
+		}
+		
+		assertThat(sum, equalTo(6));
 	}
 }
 
