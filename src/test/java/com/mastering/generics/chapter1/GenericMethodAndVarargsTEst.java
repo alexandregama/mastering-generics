@@ -48,6 +48,18 @@ public class GenericMethodAndVarargsTEst {
 		
 		assertThat(list, hasItems(1, 2, 3, 4, 5));
 	}
+	
+	@Test
+	public void shouldAddElelementsToTheEndOfTheList() throws Exception {
+		List<Integer> integers = new ArrayList<>();
+		integers.add(1);
+		integers.add(2);
+		integers.add(3);
+		
+		addToTheEnd(integers, 4, 5, 6);
+		
+		assertThat(integers, hasItems(1, 2, 3, 4, 5, 6));
+	}
 
 	private <T> List<T> toList(T[] arrayOfElements) {
 		List<T> list = new ArrayList<>();
@@ -64,6 +76,13 @@ public class GenericMethodAndVarargsTEst {
 			list.add(value);
 		}
 		return list;
+	}
+	
+	@SuppressWarnings("unchecked")
+	private <T> void addToTheEnd(List<T> list, T ...elements) {
+		for (T value: elements) {
+			list.add(value);
+		}
 	}
 }
 
